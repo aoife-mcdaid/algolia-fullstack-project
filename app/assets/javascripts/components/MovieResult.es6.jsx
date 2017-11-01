@@ -7,13 +7,25 @@ class MovieResult extends React.Component {
 
     this.mouseOver = this.mouseOver.bind(this);
     this.mouseOut = this.mouseOut.bind(this);
+    this.handleMovieDelete = this.handleMovieDelete.bind(this);
   }
 
   mouseOver() {
     this.setState({hover: true});
   }
+
   mouseOut() {
     this.setState({hover: false});
+  }
+
+  handleMovieDelete() {
+    const movieId = this.props.movie.objectID
+    const deleteUrl = `/movies/${movieId}`
+    $.ajax({
+      type: "DELETE",
+      url: deleteUrl,
+      dataType: "json"
+    })
   }
 
   render() {
@@ -46,14 +58,12 @@ class MovieResult extends React.Component {
             })}</div>
           </div>
         </div>
-        <a href={this.props.deleteMovieUrl}>
-          <button className={classNames(
-            "brand-button warning-button",
-            {"hide": !this.state.hover}
-          )}>
-            Delete
-          </button>
-        </a>
+        <button onClick={this.handleMovieDelete} className={classNames(
+          "brand-button warning-button",
+          {"hide": !this.state.hover}
+        )}>
+          Delete
+        </button>
       </div>
     )
   }

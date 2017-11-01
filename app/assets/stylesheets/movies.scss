@@ -1,0 +1,57 @@
+// Place all the styles related to the Movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.movie-container {
+  display: flex;
+  margin: 50px;
+  img {
+    height: 150px;
+  }
+  .movie-details {
+    margin-left: 30px;
+    .movie-detail-row {
+      margin-bottom: 10px;
+      .movie-title {
+        color: #367CC3;
+      }
+      .movie-stars {
+        color: #F9AD2A;
+        margin-left: 5px;
+        .movie-star {
+          margin-right: 2px;
+        }
+      }
+      .movie-genre {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+
+.form-container {
+  padding: 40px;
+  .form-item {
+    margin: 0 10px 10px 0;
+    &.rating-stars {
+      display: inline-block;
+      .movie-star {
+        margin-right: 2px;
+        &:hover {
+          cursor: pointer;
+        }
+
+      }
+    }
+  }
+  input.form-item {
+    font-size: 16px;
+    height: 40px;
+    padding: 10px;
+  }
+  input.submit-button {
+    width: 100px;
+    height: 40px;
+  }
+}

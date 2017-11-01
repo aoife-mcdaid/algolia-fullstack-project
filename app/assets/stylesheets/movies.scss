@@ -4,32 +4,104 @@
 
 .movie-container {
   display: flex;
-  margin: 50px;
-  img {
-    height: 150px;
-  }
-  .movie-details {
-    margin-left: 30px;
-    .movie-detail-row {
-      margin-bottom: 10px;
-      .movie-title {
-        color: #367CC3;
-      }
-      .movie-stars {
-        color: #F9AD2A;
-        margin-left: 5px;
-        .movie-star {
-          margin-right: 2px;
+  justify-content: space-between;
+  align-items: center;
+  .movie-inner-container {
+    display: flex;
+    margin: 50px 50px 50px 0;
+    img {
+      height: 150px;
+    }
+    .movie-details {
+      margin-left: 30px;
+      .movie-detail-row {
+        margin-bottom: 10px;
+        .movie-title {
+          color: #367CC3;
+          font-size: 18px;
+        }
+        &.movie-year {
+          font-size: 15px;
+        }
+        .movie-stars {
+          color: #F9AD2A;
+          margin-left: 5px;
+          .movie-star {
+            margin-right: 2px;
+          }
+        }
+        .movie-genre {
+          font-size: 12px;
+          background: #BBBBBB;
+          padding: 2px 7px;
+          border-radius: 15px;
+          color: white;
+          margin-right: 5px;
         }
       }
-      .movie-genre {
-        margin-right: 5px;
-      }
+    }
+
+  }
+}
+.brand-button {
+  background: #2D7BE9;
+  border: none;
+  border-radius: 3px;
+  color: #192558;
+  min-width: 100px;
+  height: 40px;
+  padding: 0 10px;
+  transition: color 0.3s ease;
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+  &.warning-button {
+    background: #d24444;
+    color: white;
+    &:hover {
+      background: #c33939;
+    }
+    &.hide {
+      display: none;
     }
   }
 }
+.search-page-container {
+  margin: 0 40px;
+  .search-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .search-area-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: 30px;
+      }
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 40px;
+        label {
+          margin: 0 10px 0 0;
+        }
+        input#search {
+          border-radius: 4px;
+          border: 1px solid #192558;
+          margin: 0 10px 0 0;
+          padding: 10px;
+          height: 40px;
+          width: 200px;
+        }
+      }
+    }
 
+  }
 
+}
 .form-container {
   padding: 40px;
   .form-item {

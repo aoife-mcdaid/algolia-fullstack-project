@@ -31,12 +31,11 @@ class NewMovieForm extends React.Component {
     })
 
     $('.rating-stars').mouseleave(() => {
-      if (this.state.rating.length === 0) {
-        allStars.forEach((star) => {
-          $(star).find('i').removeClass('fa-star')
-          $(star).find('i').addClass('fa-star-o')
-        })
-      } else {
+      allStars.forEach((star) => {
+        $(star).find('i').removeClass('fa-star')
+        $(star).find('i').addClass('fa-star-o')
+      })
+      if (this.state.rating.length !== 0) {
         for (i = 0; i <= (this.state.rating - 1); i++ ) {
           $(allStars[i]).find('i').removeClass('fa-star-o');
           $(allStars[i]).find('i').addClass('fa-star');
@@ -77,20 +76,24 @@ class NewMovieForm extends React.Component {
     this.yearEl.value = '';
     this.clearStars();
   }
+
   handleTitleChange(e) {
     this.setState({title: e.target.value});
   }
+
   handleYearChange(e) {
     this.setState({year: e.target.value});
   }
+
   handleRatingChange(e, index) {
     const value = index + 1;
     this.setState({rating: value});
   }
+
   render() {
     return (
-      <div className="form-container">
-        <h1>Add a movie</h1>
+      <div className="new-movie-form-container">
+        <h1 className="new-movie-title">Add a Movie</h1>
         <form className="new-movie-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <input
@@ -124,7 +127,7 @@ class NewMovieForm extends React.Component {
               })}
             </div>
           </div>
-          <input className="submit-button" type="submit"/>
+          <input className="submit-button brand-button" type="submit"/>
         </form>
       </div>
     )

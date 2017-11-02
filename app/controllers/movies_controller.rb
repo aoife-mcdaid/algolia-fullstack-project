@@ -18,9 +18,9 @@ class MoviesController < ApplicationController
       rating: params[:rating]
     )
     if movie.save
-      redirect_to root_path, notice: "Movie added!"
+      redirect_to root_path, notice: "#{movie.title} added!"
     else
-      redirect_to new_movie_path, alert: "Movie not added"
+      redirect_to new_movie_path, alert: "Error: #{movie.title} could not be added"
     end
   end
 
@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
     movie = Movie.find(movie_id)
     movie.destroy
 
-    flash[:notice] = "#{movie.title} was sucessfully deleted"
+    flash[:notice] = "#{movie.title} was successfully deleted"
     redirect_to root_path
   end
 

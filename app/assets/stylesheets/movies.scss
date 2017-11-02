@@ -2,13 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.results-pagination {
+  text-align: center;
+  .page-number {
+    border: 1px solid #BBBBBB;
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 1px 4px;
+    font-size: 12px;
+    border-radius: 1px;
+    &:hover {
+      background: #2D7BE9;
+      color: white;
+      border: 2px solid #2D7BE9;
+    }
+    &.selected {
+      border: 2px solid #2D7BE9;
+    }
+  }
+}
 .movie-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   .movie-inner-container {
     display: flex;
-    margin: 50px 50px 50px 0;
+    margin: 25px 0 25px;
     img {
       height: 150px;
     }
@@ -44,20 +63,24 @@
   }
 }
 .brand-button {
-  background: #2D7BE9;
-  border: none;
+  background: white;
+  border: 2px solid #BBBBBB;
   border-radius: 3px;
-  color: #192558;
+  color: #2D7BE9;
+  cursor: pointer;
   min-width: 100px;
   height: 40px;
   padding: 0 10px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  &:focus {
+    outline: none;
+  }
   &:hover {
-    color: white;
-    cursor: pointer;
+    border: 2px solid #2D7BE9;
   }
   &.warning-button {
     background: #d24444;
+    border: none;
     color: white;
     &:hover {
       background: #c33939;
@@ -70,9 +93,12 @@
 .search-page-container {
   margin: 0 40px;
   .search-header-bar {
+    border-bottom: 5px solid #F1F1F1;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 30px;
     .search-area-container {
       display: flex;
       align-items: center;
@@ -90,7 +116,7 @@
         }
         input#search {
           border-radius: 4px;
-          border: 1px solid #192558;
+          border: 1px solid #BBBBBB;
           margin: 0 10px 0 0;
           padding: 10px;
           height: 40px;
@@ -102,12 +128,32 @@
   }
 
 }
-.form-container {
+.new-movie-form-container {
+  margin: 0 auto;
   padding: 40px;
+  width: 60%;
+  .new-movie-title {
+    border-bottom: 5px solid #BBBBBB;
+    color: #2D7BE9;
+    font-size: 28px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  .new-movie-form {
+    input {
+      margin-right: 30px;
+    }
+    .form-group {
+      display: flex;
+      align-items: center;
+    }
+  }
   .form-item {
     margin: 0 10px 10px 0;
     &.rating-stars {
+      color: #2D7BE9;
       display: inline-block;
+      font-size: 20px;
       .movie-star {
         margin-right: 2px;
         &:hover {

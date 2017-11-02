@@ -43,9 +43,9 @@ class MovieResult extends React.Component {
             <div className="movie-detail-row">
               <span className="movie-title">{movie.title}</span>
               <span className="movie-stars">
-                {_(movie.rating).times(() => {
-                  return(
-                    <span className="movie-star">
+                {_(movie.rating).times((i) => {
+                  return (
+                    <span key={i} className="movie-star">
                       <i className="fa fa-star" aria-hidden="true"></i>
                     </span>
                   )
@@ -53,8 +53,8 @@ class MovieResult extends React.Component {
               </span>
             </div>
             <div className="movie-detail-row movie-year">{movie.year}</div>
-            <div className="movie-detail-row">{movie.genre.map((genre) => {
-              return <span className="movie-genre">{genre}</span>
+            <div className="movie-detail-row">{movie.genre.map((genre, i) => {
+              return <span key={i} className="movie-genre">{genre}</span>
             })}</div>
           </div>
         </div>

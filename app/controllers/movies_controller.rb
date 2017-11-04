@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.first(5)
+    @movies = Movie.first(10)
     @algolia_image = ActionController::Base.helpers.asset_path('algolia-logo-light.png')
   end
 
@@ -15,7 +15,8 @@ class MoviesController < ApplicationController
     movie = Movie.new(
       title: params[:title],
       year: params[:year],
-      rating: params[:rating]
+      rating: params[:rating],
+      genre: params[:genre]
     )
     if movie.save
       redirect_to root_path, notice: "#{movie.title} added!"

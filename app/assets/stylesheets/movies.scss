@@ -1,6 +1,8 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "config/variables";
+
 
 .results-pagination {
   text-align: center;
@@ -12,12 +14,12 @@
     font-size: 12px;
     border-radius: 1px;
     &:hover {
-      background: #2D7BE9;
+      background: $french-blue;
       color: white;
-      border: 2px solid #2D7BE9;
+      border: 2px solid $french-blue;
     }
     &.selected {
-      border: 2px solid #2D7BE9;
+      border: 2px solid $french-blue;
     }
   }
 }
@@ -66,7 +68,7 @@
   background: white;
   border: 2px solid #BBBBBB;
   border-radius: 3px;
-  color: #2D7BE9;
+  color: $french-blue;
   cursor: pointer;
   min-width: 100px;
   height: 40px;
@@ -76,7 +78,7 @@
     outline: none;
   }
   &:hover {
-    border: 2px solid #2D7BE9;
+    border: 2px solid $french-blue;
   }
   &.warning-button {
     background: #d24444;
@@ -128,13 +130,18 @@
   }
 
 }
+.new-movie-form-wrapper {
+  .movie-form-back-link {
+    color: $french-blue;
+  }
+}
 .new-movie-form-container {
   margin: 0 auto;
   padding: 40px;
   width: 60%;
   .new-movie-title {
     border-bottom: 5px solid #BBBBBB;
-    color: #2D7BE9;
+    color: $french-blue;
     font-size: 28px;
     margin-bottom: 20px;
     padding-bottom: 10px;
@@ -146,12 +153,13 @@
     .form-group {
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
   }
   .form-item {
     margin: 0 10px 10px 0;
     &.rating-stars {
-      color: #2D7BE9;
+      color: $french-blue;
       display: inline-block;
       font-size: 20px;
       .movie-star {
@@ -161,6 +169,27 @@
         }
 
       }
+    }
+  }
+  .movie-form-second-row {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    .genre-form {
+      margin-bottom: 25px;
+      .form-item {
+        margin-bottom: 0;
+        margin-right: 8px;
+      }
+      i.fa-plus, .fa-plus-square {
+        color: #2D7BE9;
+        cursor: pointer;
+        font-size: 25px;
+        z-index: 1;
+      }
+    }
+    .submit-button {
+      margin-right: 0;
     }
   }
   input.form-item {

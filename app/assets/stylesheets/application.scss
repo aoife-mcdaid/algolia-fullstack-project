@@ -13,11 +13,12 @@
  *= require_tree .
  *= require_self
  */
- @import "font-awesome";
+@import "font-awesome";
 
- body {
-  font-family: 'Roboto', sans-serif;
- }
+
+body {
+font-family: 'Roboto', sans-serif;
+}
 
 .main-content {
   margin: 100px;

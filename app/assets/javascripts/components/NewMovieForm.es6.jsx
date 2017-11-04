@@ -4,12 +4,14 @@ class NewMovieForm extends React.Component {
     this.state = {
       title: '',
       year: '',
-      rating: ''
+      rating: '',
+      genre: []
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleYearChange = this.handleYearChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
+    this.handleGenreChange = this.handleGenreChange.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +46,16 @@ class NewMovieForm extends React.Component {
     })
   }
 
+  onPlusHover(e) {
+    $(e.target).removeClass("fa-plus");
+    $(e.target).addClass("fa-plus-square");
+  }
+
+  offPlusHover(e) {
+    $(e.target).removeClass("fa-plus-square");
+    $(e.target).addClass("fa-plus");
+  }
+
   handleSubmit(e) {
     const title = this.state.title;
     e.preventDefault();
@@ -52,13 +64,15 @@ class NewMovieForm extends React.Component {
       data: {
         title: this.state.title,
         year: this.state.year,
-        rating: this.state.rating
+        rating: this.state.rating,
+        genre: this.state.genre
       }
     })
     this.state = {
       title: '',
       year: '',
-      rating: ''
+      rating: '',
+      genre: []
     }
     this.resetForm();
   }
@@ -75,6 +89,7 @@ class NewMovieForm extends React.Component {
     this.titleEl.value = '';
     this.yearEl.value = '';
     this.clearStars();
+    this.genreEl.value = '';
   }
 
   handleTitleChange(e) {
@@ -90,45 +105,97 @@ class NewMovieForm extends React.Component {
     this.setState({rating: value});
   }
 
+  handleGenreChange() {
+    let genre;
+    if (this.state) {
+      genre = this.state.genre;
+    } else {
+      genre = [];
+    }
+    const newGenre = this.genreEl.value;
+    genre.push(newGenre);
+    this.setState({genre: genre});
+    this.genreEl.value = '';
+  }
+
   render() {
     return (
-      <div className="new-movie-form-container">
-        <h1 className="new-movie-title">Add a Movie</h1>
-        <form className="new-movie-form" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <input
-              ref={(el) => this.titleEl = el}
-              className="form-item"
-              type="text"
-              name="title"
-              placeholder="Movie title"
-              onChange={this.handleTitleChange}
-            />
-            <input
-              ref={(el) => this.yearEl = el}
-              className="form-item"
-              type="number"
-              name="year"
-              placeholder="Movie year"
-              onChange={this.handleYearChange}
-            />
-            <div className="rating-stars form-item">
-              {_(5).times((i) => {
-                return (
-                  <span
-                    key={i}
-                    data-index={i}
-                    className={`movie-star star-${i}`}
-                    onClick={(e) => this.handleRatingChange(e, i)}
-                  >
-                    <i className="fa fa-star-o" aria-hidden="true"></i>
-                  </span>
-                )
-              })}
+      <div>
+        <div className="movie-form-back-link">
+          <a href={this.props.homeLink}>Back to search</a>
+        </div>
+        <div className="new-movie-form-container">
+          <h1 className="new-movie-title">Add a Movie</h1>
+          <form className="new-movie-form" onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <input
+                ref={(el) => this.titleEl = el}
+                className="form-item"
+                type="text"
+                name="title"
+                placeholder="Movie title"
+                onChange={this.handleTitleChange}
+              />
+              <input
+                ref={(el) => this.yearEl = el}
+                className="form-item"
+                type="number"
+                name="year"
+                placeholder="Movie year"
+                onChange={this.handleYearChange}
+              />
+              <div className="rating-stars form-item">
+                {_(5).times((i) => {
+                  return (
+                    <span
+                      key={i}
+                      data-index={i}
+                      className={`movie-star star-${i}`}
+                      onClick={(e) => this.handleRatingChange(e, i)}
+                    >
+                      <i className="fa fa-star-o" aria-hidden="true"></i>
+                    </span>
+                  )
+                })}
+              </div>
             </div>
-          </div>
-          <input className="submit-button brand-button" type="submit"/>
-        </form>
+            <div className="movie-form-second-row">
+              <div className="genre-form">
+                <div className="genre-input">
+                  <input
+                    ref={(el) => this.genreEl = el}
+                    type="text"
+                    className="form-item"
+                    placeholder="Add genre"
+
+
+                  />
+                  <i
+                    ref={(el) => this.$plusEl = $(el)}
+                    onMouseEnter={(e) => this.onPlusHover(e)}
+                    onMouseLeave={(e) => this.offPlusHover(e)}
+                    onClick={this.handleGenreChange}
+                    className="fa fa-plus"
+                    aria-hidden="true"
+                  >
+                  </i>
+
+                </div>
+                <div>
+                  { this.state.genre.length > 0 &&
+                    this.state.genre.map((genre) => {
+                      return (
+                        <div>{genre}</div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+              <input className="submit-button brand-button" type="submit"/>
+            </div>
+          </form>
+        </div>
+
       </div>
     )
   }

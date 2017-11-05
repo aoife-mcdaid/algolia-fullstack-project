@@ -73,6 +73,7 @@
   min-width: 100px;
   height: 40px;
   padding: 0 10px;
+  text-align: center;
   transition: all 0.3s ease;
   &:focus {
     outline: none;
@@ -174,18 +175,37 @@
   .movie-form-second-row {
     display: flex;
     justify-content: space-between;
-    // align-items: center;
     .genre-form {
       margin-bottom: 25px;
       .form-item {
         margin-bottom: 0;
         margin-right: 8px;
       }
-      i.fa-plus, .fa-plus-square {
-        color: #2D7BE9;
-        cursor: pointer;
-        font-size: 25px;
-        z-index: 1;
+      .genre-input {
+        display: flex;
+        align-items: center;
+        i.fa-plus {
+          color: #2D7BE9;
+          cursor: pointer;
+          font-size: 25px;
+          z-index: 1;
+          &.big-plus {
+            font-size: 28px;
+          }
+        }
+      }
+      .genre-list-container {
+        color: $french-blue;
+        padding: 10px 30px 10px 10px;
+        .genre-list {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .fa-trash {
+          color: black;
+          cursor: pointer;
+        }
       }
     }
     .submit-button {
@@ -195,7 +215,7 @@
   input.form-item {
     font-size: 16px;
     height: 40px;
-    padding: 10px;
+    padding: 0 10px;
   }
   input.submit-button {
     width: 100px;

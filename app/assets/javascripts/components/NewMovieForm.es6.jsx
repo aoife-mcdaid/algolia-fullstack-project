@@ -47,13 +47,11 @@ class NewMovieForm extends React.Component {
   }
 
   onPlusHover(e) {
-    $(e.target).removeClass("fa-plus");
-    $(e.target).addClass("fa-plus-square");
+    $(e.target).addClass("big-plus");
   }
 
   offPlusHover(e) {
-    $(e.target).removeClass("fa-plus-square");
-    $(e.target).addClass("fa-plus");
+    $(e.target).removeClass("big-plus");
   }
 
   handleSubmit(e) {
@@ -118,6 +116,14 @@ class NewMovieForm extends React.Component {
     this.genreEl.value = '';
   }
 
+  deleteGenre(genre) {
+    const oldGenre = this.state.genre;
+    const newGenre = oldGenre.filter((currentGenre) => {
+      return currentGenre !== genre;
+    })
+    this.setState({genre: newGenre});
+  }
+
   render() {
     return (
       <div>
@@ -126,7 +132,7 @@ class NewMovieForm extends React.Component {
         </div>
         <div className="new-movie-form-container">
           <h1 className="new-movie-title">Add a Movie</h1>
-          <form className="new-movie-form" onSubmit={this.handleSubmit}>
+          <form className="new-movie-form">
             <div className="form-group">
               <input
                 ref={(el) => this.titleEl = el}
@@ -181,21 +187,23 @@ class NewMovieForm extends React.Component {
                   </i>
 
                 </div>
-                <div>
+                <div className="genre-list-container">
                   { this.state.genre.length > 0 &&
-                    this.state.genre.map((genre) => {
+                    this.state.genre.map((genre, i) => {
                       return (
-                        <div>{genre}</div>
+                        <div key={i} className="genre-list">
+                          {genre}
+                          <i className="fa fa-trash" onClick={() => this.deleteGenre(genre)} aria-hidden="true"></i>
+                        </div>
                       )
                     })
                   }
                 </div>
               </div>
-              <input className="submit-button brand-button" type="submit"/>
+              <input className="submit-button brand-button" defaultValue="Submit" onClick={this.handleSubmit}/>
             </div>
           </form>
         </div>
-
       </div>
     )
   }

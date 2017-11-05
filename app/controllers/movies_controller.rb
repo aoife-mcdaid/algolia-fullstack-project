@@ -4,9 +4,6 @@ class MoviesController < ApplicationController
     @algolia_image = ActionController::Base.helpers.asset_path('algolia-logo-light.png')
   end
 
-  def show
-  end
-
   def new
     @movie = Movie.new
   end

@@ -128,7 +128,7 @@ class NewMovieForm extends React.Component {
     return (
       <div>
         <div className="movie-form-back-link">
-          <a href={this.props.homeLink}>Back to search</a>
+          <a href={this.props.homeLink}>Back to Search</a>
         </div>
         <div className="new-movie-form-container">
           <h1 className="new-movie-title">Add a Movie</h1>

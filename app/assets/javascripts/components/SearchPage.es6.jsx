@@ -19,7 +19,6 @@ class SearchPage extends React.Component {
       page: 0
     })
       .then((content) => {
-        console.log(content)
         this.setState({
           searchText: this.input.value,
           results: content.hits,
@@ -69,6 +68,7 @@ class SearchPage extends React.Component {
               <input
                 className="brand-button submit-button"
                 type="submit"
+                value="Search"
               />
             </form>
           </div>
@@ -87,7 +87,10 @@ class SearchPage extends React.Component {
                   return (
                     <span
                       key={i}
-                      className="page-number"
+                      className={classNames(
+                        "page-number",
+                        {"selected": i === this.state.currentPage}
+                      )}
                       onClick={() => this.handlePageClick(i)}
                     >
                       {i + 1}

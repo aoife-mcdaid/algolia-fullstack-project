@@ -1,21 +1,19 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "config/variables";
 
+$french-blue: #2D7BE9;
 
 .results-pagination {
   text-align: center;
   .page-number {
-    border: 1px solid #BBBBBB;
+    border: 2px solid #BBBBBB;
     cursor: pointer;
     margin: 0 5px;
     padding: 1px 4px;
     font-size: 12px;
     border-radius: 1px;
     &:hover {
-      background: $french-blue;
-      color: white;
       border: 2px solid $french-blue;
     }
     &.selected {
@@ -27,6 +25,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   .movie-inner-container {
     display: flex;
     margin: 25px 0 25px;
@@ -85,11 +84,13 @@
     background: #d24444;
     border: none;
     color: white;
+    position: absolute;
+    right: 0;
     &:hover {
       background: #c33939;
     }
     &.hide {
-      display: none;
+      visibility: hidden;
     }
   }
 }
@@ -102,6 +103,9 @@
     justify-content: space-between;
     margin-bottom: 10px;
     padding-bottom: 30px;
+    @media(max-width: 800px) {
+      display: block;
+    }
     .search-area-container {
       display: flex;
       align-items: center;
@@ -126,20 +130,35 @@
           width: 200px;
         }
       }
+      @media(max-width: 800px) {
+        justify-content: flex-start;
+        margin-bottom: 15px;
+      }
+      @media(max-width: 600px) {
+        display: block;
+        form {
+          display: block;
+          margin: 15px 0 0;
+        }
+      }
     }
 
   }
 
 }
-.new-movie-form-wrapper {
-  .movie-form-back-link {
-    color: $french-blue;
+.movie-form-back-link a {
+  color: $french-blue;
+  @media(max-width: 1080px) {
+    margin-left: 40px;
   }
 }
 .new-movie-form-container {
   margin: 0 auto;
   padding: 40px;
-  width: 60%;
+  width: 90%;
+  @media(max-width: 720px) {
+    width: 100%;
+  }
   .new-movie-title {
     border-bottom: 5px solid #BBBBBB;
     color: $french-blue;
@@ -155,6 +174,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      @media(max-width: 720px) {
+        display: block;
+      }
     }
   }
   .form-item {
@@ -175,6 +197,9 @@
   .movie-form-second-row {
     display: flex;
     justify-content: space-between;
+    @media(max-width: 720px) {
+      display: block;
+    }
     .genre-form {
       margin-bottom: 25px;
       .form-item {
@@ -196,6 +221,7 @@
       }
       .genre-list-container {
         color: $french-blue;
+        max-width: 210px;
         padding: 10px 30px 10px 10px;
         .genre-list {
           display: flex;

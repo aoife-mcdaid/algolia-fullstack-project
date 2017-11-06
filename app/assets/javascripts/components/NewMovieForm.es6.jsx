@@ -19,30 +19,40 @@ class NewMovieForm extends React.Component {
   }
 
   initRatingStars() {
-    const allStars = $('.movie-star').toArray();
-    $('.movie-star').hover(function() {
-      const currentIndex = $(this).data('index');
-      allStars.forEach((star) => {
-        $(star).find('i').removeClass('fa-star')
-        $(star).find('i').addClass('fa-star-o')
-      })
-      for (i = 0; i <= currentIndex; i++ ) {
-        $(allStars[i]).find('i').removeClass('fa-star-o');
-        $(allStars[i]).find('i').addClass('fa-star');
-      }
+    const allStars = this.$ratingStars.find('.movie-star');
+
+    $('.movie-star').mouseenter((e) => {
+      this.clearStars();
+
+      const currentIndex = $(e.currentTarget).data('index');
+      allStars.each((i, star) => {
+        if (i <= currentIndex) {
+          this.fillStar(star);
+        }
+      });
     })
 
-    $('.rating-stars').mouseleave(() => {
-      allStars.forEach((star) => {
-        $(star).find('i').removeClass('fa-star')
-        $(star).find('i').addClass('fa-star-o')
-      })
+    this.$ratingStars.mouseleave(() => {
+      this.clearStars();
       if (this.state.rating.length !== 0) {
-        for (i = 0; i <= (this.state.rating - 1); i++ ) {
-          $(allStars[i]).find('i').removeClass('fa-star-o');
-          $(allStars[i]).find('i').addClass('fa-star');
-        }
+        allStars.each((i, star) => {
+          if (i <= this.state.rating - 1) {
+            this.fillStar(star);
+          }
+        });
       }
+    })
+  }
+
+  fillStar(star) {
+    $(star).find('i').removeClass('fa-star-o').addClass('fa-star');
+  }
+
+  clearStars() {
+    const allStars = $('.movie-star').toArray();
+    allStars.forEach((star) => {
+      $(star).find('i').removeClass('fa-star')
+      $(star).find('i').addClass('fa-star-o')
     })
   }
 
@@ -73,14 +83,6 @@ class NewMovieForm extends React.Component {
       genre: []
     }
     this.resetForm();
-  }
-
-  clearStars() {
-    const allStars = $('.movie-star').toArray();
-    allStars.forEach((star) => {
-      $(star).find('i').removeClass('fa-star')
-      $(star).find('i').addClass('fa-star-o')
-    })
   }
 
   resetForm() {
@@ -150,13 +152,16 @@ class NewMovieForm extends React.Component {
                 placeholder="Movie year"
                 onChange={this.handleYearChange}
               />
-              <div className="rating-stars form-item">
+              <div
+                className="rating-stars form-item"
+                ref={(el) => this.$ratingStars = $(el)}
+              >
                 {_(5).times((i) => {
                   return (
                     <span
                       key={i}
                       data-index={i}
-                      className={`movie-star star-${i}`}
+                      className="movie-star"
                       onClick={(e) => this.handleRatingChange(e, i)}
                     >
                       <i className="fa fa-star-o" aria-hidden="true"></i>
@@ -185,7 +190,6 @@ class NewMovieForm extends React.Component {
                     aria-hidden="true"
                   >
                   </i>
-
                 </div>
                 <div className="genre-list-container">
                   { this.state.genre.length > 0 &&

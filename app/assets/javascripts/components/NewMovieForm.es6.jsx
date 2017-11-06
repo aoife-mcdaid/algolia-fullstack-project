@@ -209,3 +209,9 @@ class NewMovieForm extends React.Component {
   }
 }
 
+NewMovieForm.propTypes = {
+  movie: PropTypes.object.isRequired,
+  createMovieLink: PropTypes.string.isRequired,
+  homeLink: PropTypes.string.isRequired
+}
+

@@ -68,3 +68,7 @@ class MovieResult extends React.Component {
     )
   }
 }
+
+MovieResult.propTypes = {
+  movie: PropTypes.object.isRequired
+}

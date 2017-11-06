@@ -105,3 +105,9 @@ class SearchPage extends React.Component {
     )
   }
 }
+
+SearchPage.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  newMovieLink: PropTypes.string.isRequired,
+  algoliaImage: PropTypes.string.isRequired
+}

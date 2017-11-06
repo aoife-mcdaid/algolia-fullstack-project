@@ -36,8 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'algoliasearch-rails'
-gem "react-rails"
-gem "font-awesome-rails"
+gem 'react-rails'
+gem 'font-awesome-rails'
 gem 'underscore-rails'
 gem 'pry'
 gem 'pry-remote'

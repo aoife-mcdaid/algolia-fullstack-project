@@ -19,7 +19,7 @@ class MovieResult extends React.Component {
   }
 
   handleMovieDelete() {
-    const movieId = this.props.movie.objectID
+    const movieId = this.props.movie.id || this.props.movie.objectID;
     const deleteUrl = `/movies/${movieId}`
     $.ajax({
       type: 'DELETE',

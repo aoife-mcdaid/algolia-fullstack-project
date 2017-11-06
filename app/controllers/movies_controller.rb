@@ -27,8 +27,7 @@ class MoviesController < ApplicationController
     movie = Movie.find(movie_id)
     movie.destroy
 
-    flash[:notice] = "#{movie.title} was successfully deleted"
-    redirect_to root_path
+    redirect_to root_path, notice: "#{movie.title} was successfully deleted", status: 303
   end
 
 end

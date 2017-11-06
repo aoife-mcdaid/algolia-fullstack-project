@@ -22,10 +22,9 @@ class MovieResult extends React.Component {
     const movieId = this.props.movie.objectID
     const deleteUrl = `/movies/${movieId}`
     $.ajax({
-      type: "DELETE",
-      url: deleteUrl,
-      dataType: "json"
-    })
+      type: 'DELETE',
+      url: deleteUrl
+    });
   }
 
   render() {

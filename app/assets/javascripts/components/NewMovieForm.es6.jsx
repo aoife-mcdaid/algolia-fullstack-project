@@ -82,14 +82,6 @@ class NewMovieForm extends React.Component {
       rating: '',
       genre: []
     }
-    this.resetForm();
-  }
-
-  resetForm() {
-    this.titleEl.value = '';
-    this.yearEl.value = '';
-    this.clearStars();
-    this.genreEl.value = '';
   }
 
   handleTitleChange(e) {
@@ -204,7 +196,11 @@ class NewMovieForm extends React.Component {
                   }
                 </div>
               </div>
-              <input className="submit-button brand-button" defaultValue="Submit" onClick={this.handleSubmit}/>
+              <button
+                className="submit-button brand-button"
+                onClick={this.handleSubmit}
+              >Submit
+              </button>
             </div>
           </form>
         </div>

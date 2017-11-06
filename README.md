@@ -1,6 +1,6 @@
 To get this app up and running:
 
-rails db:seed
-rails server
+Run: rails db:seed
+Then: rails server
 
-go to http://localhost:3000/
+Go to http://localhost:3000/

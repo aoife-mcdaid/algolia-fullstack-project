@@ -105,9 +105,11 @@ class NewMovieForm extends React.Component {
       genre = [];
     }
     const newGenre = this.genreEl.value;
-    genre.push(newGenre);
-    this.setState({genre: genre});
-    this.genreEl.value = '';
+    if (newGenre.length > 0) {
+      genre.push(newGenre);
+      this.setState({genre: genre});
+      this.genreEl.value = '';
+    }
   }
 
   deleteGenre(genre) {

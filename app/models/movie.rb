@@ -14,7 +14,7 @@ class Movie < ActiveRecord::Base
   serialize :genre, Array
 
   algoliasearch do
-    attribute :title, :alternative_titles, :actors, :year, :genre, :rating
+    attribute :title, :alternative_titles, :actors, :year, :genre, :rating, :image
     searchableAttributes ['title']
   end
 end

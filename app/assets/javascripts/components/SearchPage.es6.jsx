@@ -12,7 +12,7 @@ class SearchPage extends React.Component {
   handleSearch(e) {
     e.preventDefault();
     const text = this.input.value;
-    const client = algoliasearch('2Z8R6W7EZ5', '0964bd4385533bac4d63209e7a13cf30');
+    const client = algoliasearch(this.props.appId, this.props.searchOnlyApiKey);
     const index = client.initIndex('Movie');
     index.search(text, {
       hitsPerPage: 10,
@@ -33,7 +33,7 @@ class SearchPage extends React.Component {
 
   handlePageClick(pageNumber) {
     const searchText = this.state.searchText;
-    const client = algoliasearch('2Z8R6W7EZ5', '0964bd4385533bac4d63209e7a13cf30');
+    const client = algoliasearch(this.props.appId, this.props.searchOnlyApiKey);
     const index = client.initIndex('Movie');
     index.search(searchText, {
       hitsPerPage: 10,
@@ -63,6 +63,7 @@ class SearchPage extends React.Component {
                 id="search"
                 ref={el => this.input = el}
                 type="text"
+                placeholder="Search"
                 onChange={this.handleSearch}
               />
               <input

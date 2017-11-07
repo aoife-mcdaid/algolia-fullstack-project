@@ -75,6 +75,8 @@ class NewMovieForm extends React.Component {
         rating: this.state.rating,
         genre: this.state.genre
       }
+    }).fail((err) => {
+      console.error(err);
     })
     this.state = {
       title: '',

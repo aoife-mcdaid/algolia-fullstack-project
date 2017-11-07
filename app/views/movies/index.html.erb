@@ -1,7 +1,7 @@
 <%= react_component('SearchPage',
     movies: @movies,
     newMovieLink: new_movie_path,
-    algoliaImage: @algolia_image
-  )
-%>
-
+    algoliaImage: @algolia_image,
+    appId: ENV['APP_ID'],
+    searchOnlyApiKey: ENV['SEARCH_ONLY_API_KEY']
+)%>

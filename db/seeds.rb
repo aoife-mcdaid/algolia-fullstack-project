@@ -8,11 +8,14 @@
 
 # require 'movies.json'
 
+
+puts "Deleting all movies..."
 Movie.delete_all
 
 movies = JSON.parse(File.read('db/movies.json'))
 
 movies.each do |movie|
+  puts "Creating movie: #{movie.title}"
   movie = Movie.create(
     title: movie["title"],
     alternative_titles: movie["alternative_titles"],
@@ -26,6 +29,5 @@ movies.each do |movie|
     genre: movie["genre"],
     objectID: movie["objectID"]
   )
-  puts "Movie created: #{movie.title}"
 end
 

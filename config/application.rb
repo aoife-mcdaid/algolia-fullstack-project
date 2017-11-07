@@ -16,7 +16,6 @@ module AlgoliaFullstackProject
 
       if File.exists?(env_file)
         YAML.load_file(env_file)[Rails.env].each do |key, value|
-          puts "key, value: #{key}, #{value}"
           ENV[key.to_s] = value
         end
       end

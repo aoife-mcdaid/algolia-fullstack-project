@@ -8,11 +8,13 @@ $french-blue: #2D7BE9;
   text-align: center;
   .page-number {
     border: 2px solid #BBBBBB;
+    border-radius: 1px;
     cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    min-width: 28px;
     margin: 0 5px;
     padding: 1px 4px;
-    font-size: 12px;
-    border-radius: 1px;
     &:hover {
       border: 2px solid $french-blue;
     }
@@ -96,6 +98,12 @@ $french-blue: #2D7BE9;
 }
 .search-page-container {
   margin: 0 40px;
+  .no-results-text {
+    color: $french-blue;
+    font-size: 18px;
+    margin-top: 30px;
+    text-align: center;
+  }
   .search-header-bar {
     border-bottom: 5px solid #F1F1F1;
     display: flex;

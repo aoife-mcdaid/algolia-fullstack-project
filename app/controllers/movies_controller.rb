@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.first(10)
     @algolia_image = ActionController::Base.helpers.asset_path('algolia-logo-light.png')
   end
 

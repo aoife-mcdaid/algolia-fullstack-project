@@ -15,7 +15,7 @@ Movie.delete_all
 movies = JSON.parse(File.read('db/movies.json'))
 
 movies.each do |movie|
-  puts "Creating movie: #{movie.title}"
+  puts "Creating movie: #{movie["title"]}"
   movie = Movie.create(
     title: movie["title"],
     alternative_titles: movie["alternative_titles"],
